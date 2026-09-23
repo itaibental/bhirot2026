@@ -297,12 +297,11 @@ body {
 
 .station-media {
   margin: 10px 0 4px; width: 100%; border-radius: 16px; overflow: hidden; position: relative;
-  height: 110px; flex-shrink: 0;
+  aspect-ratio: 16 / 9; flex-shrink: 0;
   background: linear-gradient(135deg, var(--blue-600), var(--navy-800));
   display: flex; align-items: center; justify-content: center;
 }
-.station-media.has-youtube { height: 190px; }
-.station-media img, .station-media video, .station-media iframe { width: 100%; height: 100%; object-fit: cover; display: block; border: 0; }
+.station-media img, .station-media video, .station-media iframe { width: 100%; height: 100%; object-fit: contain; display: block; border: 0; }
 .station-media .media-fallback-icon { width: 34px; height: 34px; color: rgba(255,255,255,.85); }
 
 .station-body { flex: 1; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 10px 18px; }
@@ -516,11 +515,9 @@ input[type=range]::-moz-range-thumb {
   #screen-quiz .station-title { font-size: 19px; }
   #quiz-options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 
-  /* תחנה: התוכן וגדול יותר, והתמונה נשארת רצועה אופקית מלאה מתחת למשימה (לא פאנל צד) */
+  /* תחנה: התוכן רחב יותר, והתמונה נשארת רצועה אופקית מלאה מתחת למשימה (לא פאנל צד), עם יחס-גובה קבוע כדי שתמיד תוצג בשלמותה */
   #screen-station .station-shell { max-width: 640px; margin: 0 auto; width: 100%; }
   .station-title { font-size: 20px; }
-  .station-media { height: 220px; }
-  .station-media.has-youtube { height: 320px; }
 
   /* מודלים נעימים יותר על מסך גדול */
   .modal-card { max-width: 400px; }
