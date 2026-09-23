@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>חדר בריחה — בחירות 2026</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="ambient" aria-hidden="true"><div class="grain"></div></div>
+  <div id="splash-mark" class="splash-mark">בחירות 2026</div>
+
+  <div class="app-shell" id="app-shell">
+
+    <!-- ===== Top bar / HUD ===== -->
+    <header class="topbar">
+      <div class="topbar-row">
+        <div class="brand">
+          <span class="brand-flag"></span>
+          <div class="brand-text">
+            <div class="brand-title">בחירות 2026 <span class="brand-pill">חדר בריחה</span></div>
+            <div class="brand-sub" id="hud-team-name">נא להירשם בהמשך</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:6px;align-items:center;" id="topbar-actions">
+          <div id="topbar-task-btns" hidden style="display:flex;gap:6px;">
+            <button type="button" class="icon-btn hint" id="btn-hint" title="רמז בתשלום 3 נק׳">רמז (-3)</button>
+          </div>
+          <button type="button" class="icon-btn" id="btn-audio-toggle" title="הפעלה/כיבוי צליל"></button>
+          <button type="button" class="icon-btn" id="btn-music-toggle" title="השתקה/הפעלה של המוזיקה"></button>
+        </div>
+      </div>
+
+      <div class="stat-row" id="hud-stats" hidden>
+        <div class="stat-pill time" id="countdown-card">
+          <span>שעון שלב</span><span class="val" id="hud-countdown">60</span>
+        </div>
+        <div class="stat-pill total">
+          <span>זמן כולל</span><span class="val" id="hud-timer">00:00</span>
+        </div>
+        <div class="stat-pill score">
+          <span>ציון</span><span class="val"><span id="hud-score">0</span>/100</span>
+        </div>
+      </div>
+
+      <div id="hud-progress-container" hidden>
+        <div style="display:flex;justify-content:space-between;font-size:10.5px;font-weight:800;color:rgba(234,243,255,.7);margin-top:8px;">
+          <span id="hud-station-title">תחנה 1 מתוך 12</span>
+          <span id="hud-stations-left">נותרו 12</span>
+        </div>
+        <div class="progress-track"><div class="progress-fill" id="hud-progress-bar"></div></div>
+      </div>
+    </header>
+
+    <!-- ===== Stage: all screens live here, one visible at a time ===== -->
+    <main class="stage">
+
+      <!-- Registration -->
+      <section id="screen-welcome" class="screen screen-pad" hidden>
+        <div style="text-align:center;flex-shrink:0;">
+          <span class="map-eyebrow">מערכת הבחירות לכנסת ה-26</span>
+          <h2 class="map-title" style="margin-top:10px;">חדר בריחה אזרחי</h2>
+          <p class="map-desc">חקרו את התחנות, פצחו את הצפנים וגלו את עקרונות הדמוקרטיה הישראלית.</p>
+        </div>
+
+        <form id="form-register" style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:14px;margin:14px 0;">
+          <div>
+            <label class="field-label" for="input-team-name">שם הקבוצה</label>
+            <input type="text" id="input-team-name" required placeholder="לדוגמה: קבוצת הדמוקרטיה" class="field-input">
+          </div>
+          <div>
+            <label class="field-label" for="input-team-members">שמות חברי הצוות</label>
+            <input type="text" id="input-team-members" required placeholder="לדוגמה: נועה, איתי ומאיה" class="field-input">
+          </div>
+          <div style="background:var(--ice-100);border:1px solid var(--line);border-radius:14px;padding:12px;font-size:12.5px;font-weight:700;color:var(--ink-600);line-height:1.55;">
+            12 תחנות מעניקות 100 נקודות. בכל תחנה עומדות לרשותכם 60 שניות (הארכה ב-5 נק׳). אימות שגוי או רמז מורידים 3 נק׳.
+          </div>
+          <button type="submit" class="btn btn-primary">יציאה לדרך והפעלת החדר</button>
+        </form>
+
+        <div style="text-align:center;font-size:11px;font-weight:700;color:var(--ink-400);flex-shrink:0;">
+          מדינת ישראל · פעילות אזרחית לבתי ספר
+        </div>
+      </section>
+
+      <!-- Level map / home -->
+      <section id="screen-map" class="screen" hidden></section>
+
+      <!-- Station -->
+      <section id="screen-station" class="screen" hidden>
+        <div id="station-mount" style="height:100%;display:flex;flex-direction:column;"></div>
+      </section>
+
+      <!-- Quiz -->
+      <section id="screen-quiz" class="screen" hidden>
+        <div id="quiz-mount" style="height:100%;display:flex;flex-direction:column;"></div>
+      </section>
+
+      <!-- Victory -->
+      <section id="screen-victory" class="screen screen-pad" hidden style="text-align:center;">
+        <div style="flex-shrink:0;">
+          <div class="trophy-badge">
+            <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v5a4 4 0 0 1-8 0V4Z"/><path d="M8 5H5a3 3 0 0 0 3 5M16 5h3a3 3 0 0 1-3 5M9 20h6M12 13v4"/></svg>
+          </div>
+          <span class="map-eyebrow">תעודת גמר רשמית</span>
+          <h2 class="map-title" style="margin-top:8px;">פיצחתם את חדר הבריחה!</h2>
+          <p class="map-desc">מערכת הבחירות לכנסת ה-26</p>
+        </div>
+
+        <div class="cert-card" style="flex:1;margin:16px 0;">
+          <div class="cert-row"><span class="cert-key">שם הקבוצה</span><span class="cert-val" id="res-team"></span></div>
+          <div class="cert-row"><span class="cert-key">שמות התלמידים</span><span class="cert-val" id="res-members"></span></div>
+          <div class="cert-row"><span class="cert-key">זמן משחק כולל</span><span class="cert-val" id="res-time"></span></div>
+          <div class="cert-row"><span class="cert-key">ציון סופי</span><span class="cert-val" id="res-score" style="color:var(--success-600);font-size:16px;"></span></div>
+        </div>
+
+        <button type="button" class="btn btn-ghost-dark" id="btn-restart">התחל משחק חדש</button>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Overlays (modals get injected here) -->
+  <div id="overlays-root"></div>
+
+  <!-- Countdown overlay (4,3,2,1...) -->
+  <div class="countdown-overlay" id="countdown-overlay">
+    <div class="countdown-banner">מוכנים?</div>
+    <div class="countdown-number" id="countdown-number">3</div>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
