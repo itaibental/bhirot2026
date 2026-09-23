@@ -17,24 +17,22 @@ export function runStation(container, stationModule, index, total, onFinished) {
   state.currentStationIndex = index;
 
   container.innerHTML = `
-    <div class="station-shell has-media">
-      <div class="station-media-slot"></div>
-      <div class="station-main">
-        <div class="station-head">
-          <div class="station-tags">
-            <span class="tag-progress">תחנה ${index} מתוך ${total} · ${meta.points} נק׳</span>
-            <span class="tag-badge">${meta.badge}</span>
-          </div>
-          <div class="station-title">${meta.title}</div>
+    <div class="station-shell">
+      <div class="station-head">
+        <div class="station-tags">
+          <span class="tag-progress">תחנה ${index} מתוך ${total} · ${meta.points} נק׳</span>
+          <span class="tag-badge">${meta.badge}</span>
         </div>
-        <div class="station-body">
-          <p style="font-size:12.5px;color:var(--ink-600);font-weight:700;margin:0 0 10px;line-height:1.5;">${meta.subtitle}</p>
-          <div class="widget-mount"></div>
-          <div class="status-line" id="station-status"></div>
-        </div>
-        <div class="station-foot">
-          <button class="btn btn-primary" id="station-verify-btn">בקש אימות פיצוח</button>
-        </div>
+        <div class="station-title">${meta.title}</div>
+      </div>
+      <div class="station-body">
+        <p style="font-size:12.5px;color:var(--ink-600);font-weight:700;margin:0 0 10px;line-height:1.5;">${meta.subtitle}</p>
+        <div class="widget-mount"></div>
+        <div class="status-line" id="station-status"></div>
+        <div class="station-media-slot"></div>
+      </div>
+      <div class="station-foot">
+        <button class="btn btn-primary" id="station-verify-btn">בקש אימות פיצוח</button>
       </div>
     </div>
   `;
