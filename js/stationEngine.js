@@ -57,10 +57,9 @@ export function runStation(container, stationModule, index, total, onFinished) {
       updateHud();
       showSuccessModal(meta.explanationTitle, meta.explanationText, onFinished);
     } else {
-      const reason = (result && result.reason) || meta.defaultWrongReason;
       addScore(-3);
       updateHud();
-      showErrorModal(reason);
+      showErrorModal('טעיתם, נסו שוב.');
     }
   });
 
