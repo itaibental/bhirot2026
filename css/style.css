@@ -578,3 +578,17 @@ input[type=range]::-moz-range-thumb {
 @media (min-width: 640px) {
   .credits-footer { font-size: 10.5px; bottom: 6px; }
 }
+
+/* ============ לוגו בית הספר — גדול, פינה ימנית עליונה, על הרקע ============ */
+.corner-logo {
+  position: fixed; top: 18px; right: 18px; z-index: 3;
+  height: 84px; width: auto; object-fit: contain;
+  filter: drop-shadow(0 8px 20px rgba(0,0,0,.55));
+  pointer-events: none;
+}
+@media (min-width: 640px) {
+  .corner-logo { height: 110px; top: 26px; right: 26px; }
+}
+@media (min-width: 900px) {
+  .corner-logo { height: 140px; top: 32px; right: 34px; }
+}
